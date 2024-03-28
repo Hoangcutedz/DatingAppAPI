@@ -1,21 +1,21 @@
 ﻿using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UsersController : ControllerBase
+    [Authorize] // Requires users to authenticate to access
+    public class UsersController : BaseApiController
     {
-        private readonly DataContext _context;
-
+        private readonly DataContext _context; // declare a field, readonly mean value be assigned only once and not changed afterwards
         public UsersController(DataContext context)
         {
             _context = context;
         }
 
+        [AllowAnonymous] // override or bypass access requested by [Authorize] and access without authentication
         [HttpGet] // endpoint /api/users
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
