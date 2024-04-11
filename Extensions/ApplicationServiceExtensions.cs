@@ -17,7 +17,7 @@ namespace API.Extensions
                     .GetConnectionString("DefaultConnection"));
             });
             services.AddCors();
-            services.AddScoped<ITokenService, TokenService>(); // subscribe to a service in "scope"
+            services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
