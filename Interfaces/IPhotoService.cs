@@ -1,4 +1,6 @@
-﻿using CloudinaryDotNet.Actions;
+﻿using API.DTOs;
+using API.Entities;
+using CloudinaryDotNet.Actions;
 
 namespace API.Interfaces
 {
