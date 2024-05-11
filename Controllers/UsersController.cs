@@ -35,7 +35,7 @@ namespace API.Controllers
                 userParams.Gender = gender == "male" ? "female" : "male";
             }
 
-            var users = await _uow.UserRepository.GetMenbersAsync(userParams);
+            var users = await _uow.UserRepository.GetMembersAsync(userParams);
 
             Response.AddPaginationHeader(new PaginationHeader(users.CurrentPage, users.PageSize, 
                 users.TotalCount, users.TotalPages));
@@ -46,9 +46,9 @@ namespace API.Controllers
         [HttpGet("{username}")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
-            var currentUser = User.GetUsername();
+            var currentUsername = User.GetUsername();
             return await _uow.UserRepository.GetMemberAsync(username,
-                isCurrentUser: currentUser == username);
+                isCurrentUser: currentUsername == username);
         }
 
         [HttpPut]

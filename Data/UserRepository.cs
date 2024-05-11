@@ -31,7 +31,7 @@ namespace API.Data
             return await query.FirstOrDefaultAsync();
         }
 
-        public async Task<PagedList<MemberDto>> GetMenbersAsync(UserParams userParams)
+        public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
         {
             var query = _context.Users.AsQueryable();
 
